@@ -10,7 +10,7 @@ const App = () => {
 
       <Routes>
           <Route path="/" element={<Stopwatch />} />
-          <Route path="/Alarm" element={<Alarm />} />
+          {/* <Route path="/Alarm" element={<Alarm />} /> */}
           <Route path="/Clock" element={<Clock />} />
         </Routes>
 

@@ -10,14 +10,14 @@ const Bottombar = () => {
 
 
   <div className=" text-black w-full px-3  flex items-center justify-around">
-    <div className='h-full'>
+    {/* <div className='h-full'>
         <Link to="/Alarm">
         <CiAlarmOff   className='text-2xl m-auto' />
         <h4 className='Actay text-[0.8vw] mt-1'>Alarm</h4>
         </Link>
 
 
-    </div>
+    </div> */}
     <div className='h-full'>
         <Link to="/Clock">
         <CiClock2  className='text-2xl m-auto' />
