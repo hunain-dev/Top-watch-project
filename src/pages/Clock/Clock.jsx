@@ -41,13 +41,7 @@ const Clock = () => {
  
  <div className="max-h-[85vh] min-w-[21%] rounded-2xl bg-linear-to-b from-yellow-50 to-white overflow-hidden">
         <div className="min-h-[76vh] flex items-center justify-start w-full ">
-          {/* <div className="py-2 px-2 relative  w-full  flex items-end justify-end">
-          <IoMdAddCircle className="text-2xl cursor-pointer" />
 
-        
-
-
-          </div> */}
           <div className="flex-col  Actay t flex px-2  items-center justify-center w-full">
             <div className="flex mt-3 items-center justify-center gap-2">
             <CiLocationArrow1 />

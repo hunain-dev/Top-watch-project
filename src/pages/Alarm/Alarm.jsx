@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Bottombar from "../../Components/Bottombar";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { RxCross1 } from "react-icons/rx";
@@ -17,9 +17,34 @@ const Alarm = () => {
     setAlarmcontain(true);
   };
 
+  const calculateAlarmDiff = () => {
+    const now = new Date();
+  
+    let alarmHour = selectedHour % 12;
+    if (selectedAmPm === "PM") alarmHour += 12;
+  
+    const alarmTime = new Date();
+    alarmTime.setHours(alarmHour);
+    alarmTime.setMinutes(selectedMinute);
+    alarmTime.setSeconds(0);
+  
+    // Agar alarm ka time guzar chuka hai → next day
+    if (alarmTime <= now) {
+      alarmTime.setDate(alarmTime.getDate() + 1);
+    }
+  
+    const diffMs = alarmTime - now;
+    const diffMinutes = Math.floor(diffMs / (1000 * 60));
+    const hours = Math.floor(diffMinutes / 60);
+    const minutes = diffMinutes % 60;
+  
+    setRingText(`Alarm will ring in ${hours} h ${minutes} min`);
+  };
+
   const [selectedHour, setSelectedHour] = useState(4);
   const [selectedMinute, setSelectedMinute] = useState(57);
   const [selectedAmPm, setSelectedAmPm] = useState("PM");
+  const [ringText, setRingText] = useState("");
 
   //  upcomming alarms
   const upcommignalarm = [
@@ -65,10 +90,15 @@ const Alarm = () => {
     }
   };
 
+  useEffect(() => {
+    calculateAlarmDiff();
+  }, [selectedHour, selectedMinute, selectedAmPm]);
+
+
   return (
     <div className="h-screen w-full    flex items-center justify-center">
       <div className="h-[85vh] w-[21%] rounded-2xl bg-linear-to-b from-yellow-50 to-white overflow-hidden">
-        <div className="py-3  w-full ">
+        <div className="py-3 min-h-[76vh] w-full  ">
           <div className=" flex px-4 py-4 items-start relative  justify-between w-full">
             <h2 className="Actay text-1xl">Set Alarm</h2>
             <IoIosAddCircleOutline
@@ -86,9 +116,11 @@ const Alarm = () => {
                     onClick={handleClose}
                   />
                 </div>
+                <div className=" w-full py-2 flex items-center justify-center">
+                  <h2 className="Actay text-[1.9vh]">{ringText}</h2>
+                </div>
 
-                <div className="flex gap-6  py-13  items-center justify-center">
-                  {/* Hours */}
+                <div className="flex gap-4  py-4  items-center justify-center">
                   <div
                     className="h-[5vh]  overflow-hidden relative"
                     onWheel={(e) => handleWheel(e, "hour")}
@@ -171,14 +203,8 @@ const Alarm = () => {
               </div>
             )}
           </div>
-          <div className="h-full w-full flex px-3 flex-col items-start gap-6 justify-start">
-            <div className=" w-full mt-7 flex gap-10 items-center justify-center">
-              <h2 className="Actay text-5xl mt-2">0:00</h2>
-              <h2 className="Actay">
-                AM <br />
-                PM
-              </h2>
-            </div>
+          <div className="h-full w-full py-5 flex px-3 flex-col items-start gap-6 justify-start">
+           
             {/* Upcomming ALarm */}
             <div className="h-full w-full ">
               <h3 className="Actay text-[1.1vw]">Upcomming Alarm</h3>
