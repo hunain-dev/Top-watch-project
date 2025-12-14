@@ -1,9 +1,29 @@
-import React from "react";
 import Bottombar from "../../Components/Bottombar";
 import { CiLocationArrow1 } from "react-icons/ci";
 import { IoMdAddCircle } from "react-icons/io";
-
+// import axios from "axios";
 const Clock = () => {
+  // const [showworldtime, setshowworldtime] = useState([])
+
+  // useEffect(() => {
+  //   const apihandler = async () => {
+  //     try {
+  //       const response = await axios.get("https://worldtimeapi.org/api/timezone");
+  //       const data = response.data
+  //       console.log(data);
+  //       setshowworldtime(data)
+  //     } catch (error) {
+  //       console.log("API is not running brother", error);
+  //     }
+  //   };
+  
+  //   apihandler();
+  // }, []);
+  
+
+
+
+  
   return (
     <div className="h-screen w-full   text-black flex items-center justify-center">
  
@@ -12,8 +32,7 @@ const Clock = () => {
           <div className="py-2 px-2 relative  w-full  flex items-end justify-end">
           <IoMdAddCircle className="text-2xl cursor-pointer" />
 
-          <div className="absolute top-0 left-0 h-[70vh] w-full"></div>
-
+        
 
 
           </div>
