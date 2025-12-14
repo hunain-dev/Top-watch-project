@@ -36,7 +36,7 @@ const Stopwatch = () => {
 
   return (
     <div className="h-screen   gap-20 flex items-center justify-center">
-      <div className="h-[85vh] w-[21%] rounded-2xl   bg-linear-to-b from-yellow-50 to-white overflow-hidden">
+      <div className="max-h-[85vh] min-w-[21%] rounded-2xl   bg-linear-to-b from-yellow-50 to-white overflow-hidden">
         <div className="min-h-[76vh] w-full ">
           <div className=" flex px-2 mt-1 items-end justify-end w-full">
           <button 
