@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import Bottombar from "../../Components/Bottombar";
 import { CiLocationArrow1 } from "react-icons/ci";
-import { IoMdAddCircle } from "react-icons/io";
 const Clock = () => {
   const [date, setDate] = useState(new Date());
 
